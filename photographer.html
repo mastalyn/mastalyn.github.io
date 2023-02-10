@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/41909ecb08.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Fisheye - photographe</title>
+  </head>
+  <body id="body-photographer">
+    <header>
+      <img
+        src="assets/images/logo.png"
+        class="logo"
+        alt="logo"
+        class="logo"
+        aria-label="Retour à la page d'accueil"
+        tabindex="1"
+      />
+    </header>
+    <main id="main" class="main" aria-hidden="false">
+      <section id="photographeInfos"></section>
+      <div
+        id="contact_modal"
+        aria-label="Formulaire de contact"
+        aria-haspopup="dialog"
+        aria-controls="dialog"
+        role="dialog"
+      >
+        <div class="modal">
+          <header>
+            <h2 class="modaltitle">Contactez-moi</h2>
+            <img
+              class="closemodal"
+              src="assets/icons/close.svg"
+              onclick="closeModal()"
+              alt="Fermer"
+              aria-label="Fermer"
+            />
+          </header>
+          <form novalidate>
+            <div>
+              <div class="first-container">
+                <label for="first">Prénom</label>
+                <input
+                  tabindex="2"
+                  id="first"
+                  name="first"
+                  type="text"
+                  minlength="2"
+                  aria-label="champ prénom"
+                  required
+                />
+                <span></span>
+              </div>
+              <div class="last-container">
+                <label for="last">Nom</label>
+                <input tabindex="2" id="last" name="last" type="text"
+                minlength="2" aria-label="champ nom required />
+                <span></span>
+              </div>
+              <div class="email-container">
+                <label for="email">Email</label>
+                <input
+                  tabindex="2"
+                  id="email"
+                  name="email"
+                  type="email"
+                  aria-label="champ email"
+                  required
+                />
+                <span></span>
+              </div>
+              <div class="textarea-container">
+                <label for="textarea">Votre message</label>
+                <input
+                  tabindex="2"
+                  id="textarea"
+                  name="textarea"
+                  type="text"
+                  aria-label="champ message"
+                  required
+                />
+                <span></span>
+              </div>
+            </div>
+            <button type="submit" tabindex="2" class="contact_button">
+              Envoyer
+            </button>
+          </form>
+        </div>
+      </div>
+      <div
+        role="search"
+        aria-hidden="false"
+        class="sort select-filter"
+        aria-label="Menu pour trier photos"
+      >
+        <div class="sort-choice"></div>
+        <span> Trier par </span>
+        <select
+          title="tri"
+          name="sorter"
+          id="sort-choice"
+          aria-label="trie des medias"
+          onchange="mediasSort(this.value)"
+        >
+          <option value="popularite" aria-label="Tri popularité">
+            Popularité
+          </option>
+          <option disabled="disabled">────────</option>
+          <option value="date" aria-label="Tri date publication">Date</option>
+          <option disabled="disabled">────────</option>
+          <option value="title" aria-label="Tri alphabétique">Titre</option>
+        </select>
+      </div>
+      <div class="photographer_media"></div>
+      <section
+        id="lightbox"
+        class="lightbox-background"
+        role="lightbox"
+        aria-modal="true"
+        aria-hidden="true"
+        tabindex="2"
+      >
+        <em id="close" class="fa-solid fa-xmark" alt="close button"></em>
+        <em
+          id="rightarrow"
+          aria-label="image précédente"
+          class="fa-solid fa-arrow-right droite"
+          alt="right button"
+          tabindex="2"
+        ></em>
+        <em
+          id="leftarrow"
+          aria-label="image suivante"
+          class="fa-solid fa-arrow-left gauche"
+          alt="left button"
+          tabindex="2"
+        ></em>
+      </section>
+    </main>
+  </body>
+  <script src="scripts/pages/photographer.js"></script>
+  <script src="scripts/factories/media.js"></script>
+  <script src="scripts/factories/photographer.js"></script>
+  <script src="scripts/utils/contactform.js"></script>
+ 
+</html>
