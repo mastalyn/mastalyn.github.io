@@ -63,7 +63,7 @@
               <div class="last-container">
                 <label for="last">Nom</label>
                 <input tabindex="2" id="last" name="last" type="text"
-                minlength="2" aria-label="champ nom required />
+                minlength="2" aria-label="champ nom" required />
                 <span></span>
               </div>
               <div class="email-container">
@@ -112,6 +112,7 @@
           aria-label="trie des medias"
           onchange="mediasSort(this.value)"
         >
+          <option disabled="disabled">────────</option>                            
           <option value="popularite" aria-label="Tri popularité">
             Popularité
           </option>
@@ -119,6 +120,7 @@
           <option value="date" aria-label="Tri date publication">Date</option>
           <option disabled="disabled">────────</option>
           <option value="title" aria-label="Tri alphabétique">Titre</option>
+          <option disabled="disabled">────────</option>   
         </select>
       </div>
       <div class="photographer_media"></div>
