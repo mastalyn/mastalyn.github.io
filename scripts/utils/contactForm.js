@@ -126,7 +126,10 @@ form.addEventListener("submit", (e) => {
 
     inputs.forEach((input) => (input.value = ""));
     modalBg.style.display = "none";
-  } else {
+    
+    closeModal()
+    
+      } else {
     
     alert("Veuillez remplir correctement les champs");
     
