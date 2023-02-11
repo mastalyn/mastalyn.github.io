@@ -141,7 +141,7 @@ function mediaFactory(mediaData, photographer) {
 
     // left arrow event : previous media onclick
     function previousMedia(internalCall = false) {
-      if (internalCall) {
+     //if (internalCall) {
         const media = document
           .querySelector("#lightbox")
           .querySelector("#lightboxMedia");
@@ -165,40 +165,18 @@ function mediaFactory(mediaData, photographer) {
             "mediaid",
             photographer.media[previousMediaIndex].id
           );
+          
         }
-      } else {
-        previousBtn.onclick = () => {
-          const media = document
-            .parentElement("#lightbox")
-            .querySelector("#lightboxMedia");
-          const actualMediaIndex = photographer.media.findIndex(
-            ({ id }) => id == media.getAttribute("mediaId")
-            //
-          );
-
-          let previousMediaIndex = actualMediaIndex - 1;
-
-          if (previousMediaIndex > photographer.media.length) {
-            previousMediaIndex = 0;
-            media.src =
-              "assets/photographers/medias/" + photographer.media[0].image;
-            media.setAttribute("mediaid", photographer.media[0].id);
-          } else {
-            media.src =
-              "assets/photographers/medias/" +
-              photographer.media[previousMediaIndex].image;
-            media.setAttribute(
-              "mediaid",
-              photographer.media[previousMediaIndex].id
-            );
-          }
-        };
-      }
+        
+       
+        
+//} 
+     
     }
 
     function nextMedia(internalCall = false) {
       // console.log("internal call", internalCall);
-       if (internalCall) {
+      // if (internalCall) {
       const media = document
         .querySelector("#lightbox")
         .querySelector("#lightboxMedia");
@@ -226,7 +204,8 @@ function mediaFactory(mediaData, photographer) {
         media.setAttribute("mediaid", photographer.media[nextMediaIndex].id);
       }
       
-    }
+      
+  //  }
   }
 
     // listen to the keyboard keys on the lightbox
