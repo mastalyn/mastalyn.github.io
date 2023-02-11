@@ -1,4 +1,3 @@
-
 const mediaLikes = {};
 
 async function getPhotographer() {
@@ -24,7 +23,7 @@ async function init() {
   const photographer = await getPhotographer();
   displayData(photographer.photographers);
   displayDataMedia(photographer.media, photographer);
-  addEventsListeners();
+  addEventsListeners(photographer);
 }
 
 // Fonction qui fait appraitre les photographes
@@ -95,9 +94,8 @@ function mediasSort(type) {
     mediaslist.append(media);
   });
 }
-function addEventsListeners() {
+function addEventsListeners(photographer) {
   const collection = document.querySelectorAll(".media_likesbuttonimage");
- 
 
   collection.forEach(function (el) {
     el.addEventListener("click", function handleClick() {
@@ -106,7 +104,7 @@ function addEventsListeners() {
       const totalLike = document.getElementById("totalLike");
       let totalCount = parseInt(totalLike.innerText, 10);
       const isLiked = mediaLikes[id];
-      console.log(isLiked)
+      console.log(isLiked);
       const likesText =
         el.parentElement.parentElement.querySelector(".media_likes");
       console.log("likesText", likesText);
@@ -127,6 +125,97 @@ function addEventsListeners() {
       el.dataset.likes = count;
       totalLike.innerText = totalCount.toString();
     });
+  });
+  const nextBtn = document.querySelector(".droite");
+  const prevBtn = document.querySelector(".gauche");
+
+  nextBtn.addEventListener("click", function () {
+    // nextMedia(true);
+    console.log("click");
+    const lightboxVideo = document.getElementById("lightboxVideo");
+    const lightbox = document.querySelector("#lightbox");
+    const media = document
+      .querySelector("#lightbox")
+      .querySelector("#lightboxMedia");
+    const actualMediaIndex = photographer.media.findIndex(
+      ({ id }) => id == lightbox.getAttribute("mediaId")
+      //
+    );
+    let nextMediaIndex = actualMediaIndex + 1;
+
+    if (nextMediaIndex >= photographer.media.length) {
+      nextMediaIndex = 0;
+    }
+    if (photographer.media[nextMediaIndex].image) {
+      if (lightboxVideo) {
+        lightboxVideo.style.display = "none";
+      }
+      media.style.display = "block";
+      media.src =
+        "assets/photographers/medias/" +
+        photographer.media[nextMediaIndex].image;
+      media.setAttribute("mediaid", photographer.media[nextMediaIndex].id);
+    } else {
+      // video
+      if (lightboxVideo) {
+        lightboxVideo.style.display = "block";
+        lightboxVideo.src = photographer.media[nextMediaIndex].video;
+      } else {
+        const v = document.createElement("video");
+        v.id = "lightboxVideo";
+        v.src =
+          "assets/photographers/medias/" +
+          photographer.media[nextMediaIndex].video;
+        v.setAttribute("controls", "");
+        lightbox.append(v);
+      }
+    }
+    lightbox.setAttribute("mediaId", photographer.media[nextMediaIndex].id);
+    console.log("media updated", media, photographer.media[nextMediaIndex]);
+  });
+  prevBtn.addEventListener("click", function () {
+    // previousMedia(true);
+    console.log("click");
+    const lightboxVideo = document.getElementById("lightboxVideo");
+    const lightbox = document.querySelector("#lightbox");
+    const media = document
+      .querySelector("#lightbox")
+      .querySelector("#lightboxMedia");
+    const actualMediaIndex = photographer.media.findIndex(
+      ({ id }) => id == lightbox.getAttribute("mediaId")
+      //
+    );
+    let previousMediaIndex = actualMediaIndex + 1;
+
+    if (previousMediaIndex >= photographer.media.length) {
+      previousMediaIndex = 0;
+    }
+    if (photographer.media[previousMediaIndex].image) {
+      if (lightboxVideo) {
+        lightboxVideo.style.display = "none";
+      }
+      media.style.display = "block";
+      media.src =
+        "assets/photographers/medias/" +
+        photographer.media[previousMediaIndex].image;
+      media.setAttribute("mediaid", photographer.media[previousMediaIndex].id);
+    } else {
+      // video
+      if (lightboxVideo) {
+        lightboxVideo.style.display = "block";
+        lightboxVideo.src = photographer.media[previousMediaIndex].video;
+      } else {
+        const v = document.createElement("video");
+        v.id = "lightboxVideo";
+        v.src =
+          "assets/photographers/medias/" +
+          photographer.media[previousMediaIndex].video;
+        v.setAttribute("controls", "");
+        lightbox.append(v);
+      }
+    }
+    lightbox.setAttribute("mediaId", photographer.media[previousMediaIndex].id);
+    console.log("media updated", media, photographer.media[previousMediaIndex]);
   });
 }
 init();
