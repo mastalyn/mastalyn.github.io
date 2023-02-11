@@ -123,7 +123,7 @@ function mediaFactory(mediaData, photographer) {
       // lightbox.innerHTML = "";
     }
 
-   /* const previousBtn = document.querySelector(".gauche");
+    //const previousBtn = document.querySelector(".gauche");
     /*const nextBtn = document.querySelector(".droite");
 
     nextBtn.addEventListener("click", function () {
@@ -198,7 +198,7 @@ function mediaFactory(mediaData, photographer) {
 
     function nextMedia(internalCall = false) {
       // console.log("internal call", internalCall);
-      // if (internalCall) {
+       if (internalCall) {
       const media = document
         .querySelector("#lightbox")
         .querySelector("#lightboxMedia");
@@ -227,6 +227,7 @@ function mediaFactory(mediaData, photographer) {
       }
       
     }
+  }
 
     // listen to the keyboard keys on the lightbox
     document.addEventListener("keydown", (e) => {
