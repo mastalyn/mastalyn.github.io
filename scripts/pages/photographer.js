@@ -156,7 +156,7 @@ function addEventsListeners(photographer) {
       media.src =
         "assets/photographers/medias/" +
         photographer.media[nextMediaIndex].image;
-      media.setAttribute("mediaid", photographer.media[nextMediaIndex].id);
+     // media.setAttribute("mediaid", photographer.media[nextMediaIndex].id);
     } else {
       // video
       media.style.display = "none";
@@ -175,7 +175,7 @@ function addEventsListeners(photographer) {
       }
     }
     lightbox.setAttribute("mediaId", photographer.media[nextMediaIndex].id);
-    console.log("media updated", media, photographer.media[nextMediaIndex]);
+   
   }
   );
   prevBtn.addEventListener("click", function () {
@@ -193,7 +193,8 @@ function addEventsListeners(photographer) {
     let previousMediaIndex = actualMediaIndex - 1;
 
     if (previousMediaIndex >= photographer.media.length) {
-      nextMediaIndex = 0;
+      previousMediaIndex = 0;
+      console.log(previousMediaIndex);
     }
     if (photographer.media[previousMediaIndex].image) {
       if (lightboxVideo) {
@@ -222,7 +223,9 @@ function addEventsListeners(photographer) {
       }
     }
     lightbox.setAttribute("mediaId", photographer.media[previousMediaIndex].id);
-   
+    
+  
+    
   }
   );
 }
