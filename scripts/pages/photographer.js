@@ -221,8 +221,8 @@ function addEventsListeners(photographer) {
         lightbox.append(v);
       }
     }
-    //lightbox.setAttribute("mediaId", photographer.media[nextMediaIndex].id);
-    //console.log("media updated", media, photographer.media[nextMediaIndex]);
+    lightbox.setAttribute("mediaId", photographer.media[previousMediaIndex].id);
+   
   }
   );
 }
