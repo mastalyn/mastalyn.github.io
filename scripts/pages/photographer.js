@@ -437,7 +437,7 @@ function addEventsListeners(photographer) {
       }
     }
     lightbox.setAttribute("mediaId", photographer.media[previousMediaIndex].id);
-    lightbox.setAttribute("mediaId", photographer.media[nextMediaIndex].id);
+   
     console.log("media updated", media, photographer.media[previousMediaIndex]);
   });
 }
